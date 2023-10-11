@@ -1,4 +1,9 @@
+require("dotenv").config();//dotenv is for some confedential data
+
 const express=require("express");
+const mongoose=require("mongoose");
+
+
 var bodyParser=require("body-parser");
 //DATABASE
 const database= require("./database");
@@ -8,6 +13,16 @@ const booky= express();
 booky.use(bodyParser.urlencoded({extended:true}));//body parser is used to make the expressfile to read the body and change to json format
 // urlencoded({extended:true} this is used for bcoz we use many requests like(req,res) so they can be object,string,int etc...
 booky.use(bodyParser.json());
+
+mongoose.connect(process.env.MONGO_URL).then(()=>console.log("Connection Established"));
+
+
+
+
+
+
+
+
 /*
 Route          /
 Description    Get all the books
